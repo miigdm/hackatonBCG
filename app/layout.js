@@ -1,5 +1,6 @@
-import './globals.css'
 import { Inter } from 'next/font/google'
+import {CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +12,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body >
+        <CssBaseline />
+      <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6">
+          ECO FOOD LINK
+        </Typography>
+      </Toolbar>
+    </AppBar>
+
+        {children}
+        </body>
     </html>
   )
 }
