@@ -1,62 +1,36 @@
-# Bookshop Demo
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Bookshop is a virtual online bookstore application through which you can find books of various categories and rate the books.
+## Getting Started
 
-You can perform CRUD operations such as viewing book details, adding and deleting ratings, editing book inventory, etc.
+First, run the development server:
 
-> Powered by TiDB Cloud, Prisma and Vercel.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## 🔥 Visit Live Demo
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-[👉 Click here to visit](https://tidb-prisma-vercel-demo.vercel.app/)
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-![image](https://github.com/pingcap/tidb-prisma-vercel-demo/assets/56986964/2ef5fd7f-9023-45f4-b639-f4ba4ddec157)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
-## 🧑‍🍳 Before We Start
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Create a [TiDB Cloud](https://tidbcloud.com/) account and get your free trial cluster.
-
-### 🚀 One Click Deploy
-
-You can click the button to quickly deploy this demo if already has an TiDB Cloud cluster.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=TiDB%20Cloud%20Starter&demo-description=A%20bookstore%20demo%20built%20on%20TiDB%20Cloud%20and%20Next.js.&demo-url=https%3A%2F%2Ftidb-prisma-vercel-demo.vercel.app%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F2HMASOQn8hQit2IFi2hK3j%2Fcfe7cc2aeba4b8f6760a3ea14c32f707%2Fscreenshot-20220902-160324_-_Chen_Zhen.png&project-name=TiDB%20Cloud%20Starter&repository-name=tidb-cloud-starter&repository-url=https%3A%2F%2Fgithub.com%2Fpingcap%2Ftidb-prisma-vercel-demo&from=templates&integration-ids=oac_coKBVWCXNjJnCEth1zzKoF1j)
-
-> Integration will guide you connect your TiDB Cloud cluster to Vercel.
-
-<details>
-  <summary><h3>Manually Deploy (Not recommended)</h3></summary>
-
-#### 1. Get connection details
-
-You can get the connection details by clicking the `Connect` button.
-
-![image](https://github.com/pingcap/tidb-prisma-vercel-demo/assets/56986964/86e5df8d-0d61-49ca-a1a8-d53f2a3f618c)
-
-Get `User` and `Host` field from the dialog.
-
-> Note: For importing initial data from local, you can set an Allow All traffic filter here by entering an IP address of `0.0.0.0/0`.
-
-![image](https://github.com/pingcap/tidb-prisma-vercel-demo/assets/56986964/8d32ed58-4edb-412f-8af8-0e1303cceed9)
-
-Your `DATABASE_URL` should look like `mysql://<User>:<Password>@<Host>:4000/bookshop`
-
-#### 2. Deploy on Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpingcap%2Ftidb-prisma-vercel-demo&repository-name=tidb-prisma-vercel-demo&env=DATABASE_URL&envDescription=TiDB%20Cloud%20connection%20string&envLink=https%3A%2F%2Fdocs.pingcap.com%2Ftidb%2Fdev%2Fdev-guide-build-cluster-in-cloud&project-name=tidb-prisma-vercel-demo)
-
-![image](https://user-images.githubusercontent.com/56986964/199161016-2d236629-bb6a-4e3c-a700-c0876523ca6a.png)
-
-</details>
-
-## 📖 Development Reference
-
-### Prisma
-
-[Prisma Deployment Guide](https://www.prisma.io/docs/guides/deployment/deploying-to-vercel)
-
-### Bookshop Schema
-
-[Bookshop Schema Design](https://docs.pingcap.com/tidbcloud/dev-guide-bookshop-schema-design)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
