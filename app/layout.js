@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
-import {CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
+import { CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
+import apm from '../rum'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,16 +15,16 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
         <CssBaseline />
-      <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6">
-          ECO FOOD LINK
-        </Typography>
-      </Toolbar>
-    </AppBar>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6">
+              ECO FOOD LINK
+            </Typography>
+          </Toolbar>
+        </AppBar>
 
         {children}
-        </body>
+      </body>
     </html>
   )
 }

@@ -44,11 +44,9 @@ const LoginForm = () => {
         </Button>
 
         <Button fullWidth variant="contained" color="primary" type="submit" style={{ marginTop: '1em' }}>
-          Registrarme como empresa
+          Registrarme 
         </Button>
-        <Button fullWidth variant="contained" color="primary" type="submit" style={{ marginTop: '1em' }}>
-          Registrarme como albergue
-        </Button>
+
       </form>
     </Paper>
   );

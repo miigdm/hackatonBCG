@@ -1,7 +1,9 @@
+"use client";
 import { Container } from '@mui/material';
 import { Paper, Typography, Box } from '@mui/material';
 import { Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
+import { useRouter } from 'next/navigation'
 
 const items = [
     {
@@ -47,6 +49,7 @@ const ListItem = ({ item }) => {
 
 
 export default function ListPage() {
+    const router = useRouter()
     return (
         <any>
          
@@ -58,6 +61,7 @@ export default function ListPage() {
                 ))}
             </Container>
             <Fab
+                onClick={() => router.push('/orders/new')}
                 color="primary"
                 aria-label="Crear"
                 style={{ position: 'fixed', right: '16px', bottom: '16px' }}
