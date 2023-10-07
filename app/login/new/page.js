@@ -104,17 +104,7 @@ import {
                 helperText={formik.touched.direccion && formik.errors.direccion}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Rubro"
-                fullWidth
-                name="rubro"
-                value={formik.values.rubro}
-                onChange={formik.handleChange}
-                error={formik.touched.rubro && Boolean(formik.errors.rubro)}
-                helperText={formik.touched.rubro && formik.errors.rubro}
-              />
-            </Grid>
+
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth error={formik.touched.rol && Boolean(formik.errors.rol)}>
                 <InputLabel>Rol</InputLabel>
@@ -130,6 +120,19 @@ import {
                 {formik.touched.rol && <div style={{ color: 'red' }}>{formik.errors.rol}</div>}
               </FormControl>
             </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Rubro"
+                fullWidth
+                name="rubro"
+                value={formik.values.rubro}
+                onChange={formik.handleChange}
+                error={formik.touched.rubro && Boolean(formik.errors.rubro)}
+                helperText={formik.touched.rubro && formik.errors.rubro}
+              />
+            </Grid>
+           
             <Grid item xs={12}>
               <Button variant="contained" color="primary" type="submit">
                 Registrar

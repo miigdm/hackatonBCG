@@ -2,10 +2,13 @@
 'use client';
 import React, { useState } from 'react';
 import { Button, TextField, Paper, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +46,12 @@ const LoginForm = () => {
           Entrar
         </Button>
 
-        <Button fullWidth variant="contained" color="primary" type="submit" style={{ marginTop: '1em' }}>
+        <Button fullWidth variant="contained" color="primary"  style={{ marginTop: '1em' }}
+        onClick={(e ) =>{
+    
+         router.push('/login/new')
+        }}
+        >
           Registrarme 
         </Button>
 
