@@ -37,7 +37,6 @@ import {
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
-        console.log('Form data', values);
        let  user = {
             "fullname": values.nombre,
             "email": values.email,
@@ -47,9 +46,7 @@ import {
             "businessCategory": values.rubro,
             "roleId": (+(values.rol))
         }
-        console.log(user)
         createUser(user).then((data)=>{
-            console.log(data)
             if (data["errors"]!=undefined  ){
                 alert("El email ya existe") // arreglar alguna vez
             }

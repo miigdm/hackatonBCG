@@ -46,9 +46,7 @@ const AddItemForm =  () => {
         "userId": (userID) ,
         "description": values.descripcion
     }
-    console.log(item)
     createOrder(item).then((data)=>{
-        console.log(data)
         if (data["errors"]!=undefined  ){
             alert("Error") // arreglar alguna vez
         }
@@ -61,7 +59,6 @@ const AddItemForm =  () => {
             "userId": userID
         }
         createTransaction(tx).then((data)=>{
-            console.log(data)
             window.location.href = "/orders"
         })
 

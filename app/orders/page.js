@@ -25,7 +25,7 @@ const ListItem = ({ item }) => {
             "userId": userID
         }
         createTransaction(tx).then((data)=>{
-            console.log(data)
+            e.log(data)
             window.location.href = "/orders"
         })
     }   

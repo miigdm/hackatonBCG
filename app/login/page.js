@@ -13,7 +13,6 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí puedes hacer la lógica de autenticación.
-    console.log(email, password);
   };
 
   return (

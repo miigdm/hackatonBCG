@@ -11,8 +11,6 @@ export const dynamic = "force-dynamic";
 
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr"
 
-
-
 const send = (item,num) =>{
     let userID = JSON.parse(localStorage.getItem("user"))
     let tx =  {
@@ -23,13 +21,19 @@ const send = (item,num) =>{
     }
 
     createTransaction(tx).then((data)=>{
-        console.log(data)
         window.location.href = "/offers"
     })
 }
 
 
 const ListItem = ({ item }) => {
+    const chipColor = {
+        1: 'green',
+        2: 'yellow',
+        3: 'green',
+        4: 'red'
+    }[item.node.actionByActionId.name];
+
     return (
         <Paper style={{ padding: '1em', margin: '1em 0' }}>
             <Typography variant="h6">{item.node.orderByOrderId.description}</Typography>
@@ -37,7 +41,7 @@ const ListItem = ({ item }) => {
             <Box display="flex" justifyContent="space-between">
             <Typography variant="body2">Cantidad: {item.node.orderByOrderId.quantity}</Typography>
                 <Typography variant="body1">Fecha: {item.node.orderByOrderId.date}</Typography>
-                <Chip variant="body1" label={item.node.actionByActionId.name} color="primary" />
+                <Chip variant="body1" label={item.node.actionByActionId.name} color='secondary' style={{backgroundColor: chipColor}}/>
             </Box>
 
             <Box display="flex" justifyContent="space-between">
@@ -59,7 +63,7 @@ const ListItem = ({ item }) => {
                    Cancelar
                 </Button>
                 </Stack>)} 
-                {item.node.actionByActionId.id==3&&<Button variant="contained" color="secondary">
+                {item.node.actionByActionId.id==3&&<Button variant="contained" color="primary">
                    Retirado
                 </Button>}
             </Box>
@@ -78,12 +82,10 @@ export default function ListPage() {
             const ids = data.allGetOffers.edges.map(item => item.node.id);
             GET_OFFERS(ids)
             .then(response => {
-                console.log("data", response.data);
                 setOrders(response.data.allTransactions.edges);
             })
             .catch(error => {
                 // Maneja el error aquí si lo deseas.
-                console.error("Error al obtener las ofertas:", error);
             });
         }
     }, [data]);
