@@ -49,7 +49,7 @@ const ListItem = ({ item }) => {
 
             <Box display="flex" justifyContent="flex-end">
                  {item.node.actionByActionId.id==1&&<Button variant="contained" onClick={(e) => { send(item.node,2)  }} color="primary">
-                    Lo quiero!
+                    ¡Lo quiero!
                 </Button>}
                 {item.node.actionByActionId.id==2&&(<Stack direction="row" spacing={2} >
                 <Button variant="contained" color="success" onClick={(e) => { send(item.node,3)  }} >
