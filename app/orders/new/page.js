@@ -62,6 +62,7 @@ const AddItemForm =  () => {
         }
         createTransaction(tx).then((data)=>{
             console.log(data)
+            window.location.href = "/orders"
         })
 
     })
