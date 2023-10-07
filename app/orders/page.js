@@ -67,9 +67,9 @@ export default function ListPage() {
             <Container>
             <Typography variant="h4" gutterBottom>  Colaboraciones</Typography>
                 {data.allOrders.edges.map((item, index) => {
-                    if (item.node.userId!= JSON.parse(localStorage.getItem("user"))){
-                        return 
-                    } 
+                    // if (item.node.userId!= JSON.parse(localStorage.getItem("user"))){
+                    //     return 
+                    // } 
 
                    return  <ListItem key={index} item={item} />
 })}
