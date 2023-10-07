@@ -67,7 +67,7 @@ export default function ListPage() {
             <Container>
             <Typography variant="h4" gutterBottom>  Colaboraciones</Typography>
                 {data.allOrders.edges.map((item, index) => {
-                    if (item.node.userByUserId.id != JSON.parse(localStorage.getItem("user"))){
+                    if (item.node.userId!= JSON.parse(localStorage.getItem("user"))){
                         return 
                     } 
 
