@@ -19,7 +19,8 @@ model users {
   businessCategory String
   roleId           Int
   role             roles   @relation(fields: [roleId], references: [id])
-  transactions           transactions[]
+  transactions     transactions[]
+  orders           orders[]
 }
 
 model orders {
@@ -29,8 +30,10 @@ model orders {
   categoryId  Int
   description String
   quantity    Int
+  userId      Int
   category    categories @relation(fields: [categoryId], references: [id])
   transactions           transactions[]
+  user        users    @relation(fields: [userId], references: [id])
 }
 
 

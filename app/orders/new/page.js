@@ -3,6 +3,15 @@ import { Button, TextField, Container, Grid, Typography,  FormControl,  InputLab
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+
+import  GET_CATEGORIES  from '@/lib/queries/categories';
+
+export const dynamic = "force-dynamic";
+
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+
+
+
 const validationSchema = Yup.object({
   fecha: Yup.date().required('Fecha es requerida'),
   categoria: Yup.string().required('Categoría es requerida'),
@@ -10,7 +19,10 @@ const validationSchema = Yup.object({
   cantidad: Yup.number().required('Cantidad es requerida').positive().integer(),
 });
 
-const AddItemForm = () => {
+const AddItemForm =  () => {
+
+    const { data } = useSuspenseQuery(GET_CATEGORIES);
+
   const formik = useFormik({
     initialValues: {
       fecha: '',
@@ -26,12 +38,14 @@ const AddItemForm = () => {
     },
   });
 
+
+
+
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
         Añadir una nueva colaboracion
       </Typography>
-
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
@@ -59,9 +73,11 @@ const AddItemForm = () => {
                 onChange={formik.handleChange}
                
               >
-                <MenuItem value="comida">Comida</MenuItem>
-                <MenuItem value="higiene">Higiene</MenuItem>
-                <MenuItem value="salud">Salud</MenuItem>
+                {data.allCategories.edges.map((category,ix) => (
+                    <MenuItem value={category.node.id} key={ix}>{category.node.name} </MenuItem>
+                ))} 
+
+               
               </Select>
               {formik.touched.categoria && <div style={{ color: 'red' }}>{formik.errors.categoria}</div>}
             </FormControl>
