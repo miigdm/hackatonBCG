@@ -24,8 +24,9 @@ export default function RootLayout({ children }) {
   };
 
   const handleClose = () => {
-      
-    
+      localStorage.clear()
+      window.location.href = "/"
+
   };
 
   useEffect(() => {
