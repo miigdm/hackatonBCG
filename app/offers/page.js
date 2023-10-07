@@ -30,7 +30,7 @@ const ListItem = ({ item }) => {
 
             <Box display="flex" justifyContent="flex-end">
                 <Button variant="contained" color="primary">
-                    Lo quiero!
+                    ¡Lo quiero!
                 </Button>
             </Box>
         </Paper>

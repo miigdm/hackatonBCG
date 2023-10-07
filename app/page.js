@@ -10,18 +10,17 @@ export default function LandingPage() {
 
     return (
         <>
-        
-
             <Container>
-                {/* <Image
-                    src="/path-a-tu-imagen.jpg"
+                <Image
+                    src="/logo.png"
                     alt="Imagen representativa"
-                    width={1200}
-                    height={800}
-                /> */}
+                    width="300"
+                    height="80"
+                />
+            </Container>
+            <Container>
                 <Typography variant="h2">
-                    Tambien te duele el hambre?
-                    botar comida a ala basura ? 
+                    Transformando desechos en ayuda social 
                 </Typography>
             
             </Container>
@@ -31,10 +30,10 @@ export default function LandingPage() {
         Sobre Nosotros
     </Typography>
     <Typography variant="body1" paragraph>
-        Somos una empresa con la misión de reducir el desperdicio alimenticio y ayudar a quienes más lo necesitan. Desde ayer, hemos colaborado con negocios y albergues en Santiago para entregar comida de calidad antes de que se dañe.
+        Somos una empresa con la misión de reducir el desperdicio de locales de comida y ayudar a quienes más lo necesitan. Desde ayer, hemos colaborado con negocios y albergues en Santiago para entregar comida de calidad antes de que se dañe.
     </Typography>
     <Typography variant="body1">
-        Hasta la fecha, hemos salvado 10000 kg de comida y apoyado a 5 albergues.
+        Hasta la fecha, hemos salvado 10.000 kg de comida y apoyado a 5 albergues.
     </Typography>
 </Container>
 
@@ -46,7 +45,7 @@ export default function LandingPage() {
         <Grid item xs={12} md={4}>
             <Card>
                 <CardContent>
-                    <Typography variant="h6">1. Registrate</Typography>
+                    <Typography variant="h6">1. Regístrate</Typography>
                     <Typography variant="body2">Los negocios y albergues se registran en nuestra plataforma y listan la comida que está por dañarse.</Typography>
                 </CardContent>
             </Card>
@@ -78,7 +77,7 @@ export default function LandingPage() {
         ¿Cómo buscamos?
     </Typography>
     <Typography variant="body2" paragraph>
-        Sabias que mucha comida se bota a la busara mientras hay gente que no tiene que comer? 
+        ¿Sabías que mucha comida se bota a la busara mientras hay gente que no tiene que comer? 
     </Typography>
     <Typography variant="body2" paragraph>
         Nosotros buscamos reducir el desperdicio alimenticio y ayudar a quienes más lo necesitan.

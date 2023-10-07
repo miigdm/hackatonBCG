@@ -115,7 +115,7 @@ const AddItemForm =  () => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Descripción"
+              label="¿Qué quieres donar?"
               fullWidth
               multiline
               rows={4}
@@ -128,7 +128,7 @@ const AddItemForm =  () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Cantidad"
+              label="¿Cuánta cantidad? (Unidades, Kg)"
               type="number"
               fullWidth
               name="cantidad"
@@ -140,7 +140,7 @@ const AddItemForm =  () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Button variant="contained" color="primary" type="submit">
-              Añadir Ítem
+              Crear
             </Button>
           </Grid>
         </Grid>
