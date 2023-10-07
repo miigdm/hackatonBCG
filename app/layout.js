@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import { CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
 import apm from '../rum'
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body >
+      <ApolloWrapper>
         <CssBaseline />
         <AppBar position="static">
           <Toolbar>
@@ -24,7 +26,9 @@ export default function RootLayout({ children }) {
         </AppBar>
 
         {children}
+        </ApolloWrapper>
       </body>
+
     </html>
   )
 }

@@ -1,45 +1,37 @@
+"use client"
 import { Container } from '@mui/material';
-import { Paper, Typography, Box } from '@mui/material';
-import { Fab } from '@mui/material';
-import { Add as AddIcon } from '@mui/icons-material';
+import { Paper, Typography, Box , Button} from '@mui/material';
 
-const items = [
-    {
-        fecha: '2023-10-06',
-        categoria: 'Frutas',
-        descripcion: 'Manzanas',
-        cantidad: 5,
-        nombre: 'Juan Pérez',
-        estado: 'Entregado'
-    },
-    {
-        fecha: '2023-10-05',
-        categoria: 'Verduras',
-        descripcion: 'Zanahorias',
-        cantidad: 10,
-        nombre: 'Ana García',
-        estado: 'Pendiente'
-    }
-];
+
+import  GET_OFFERS  from '@/lib/queries/offers';
+
+export const dynamic = "force-dynamic";
+
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr"
 
 
 const ListItem = ({ item }) => {
     return (
         <Paper style={{ padding: '1em', margin: '1em 0' }}>
-            <Typography variant="h6">{item.nombre}</Typography>
+            <Typography variant="h6">{item.node.orderByOrderId.description}</Typography>
 
             <Box display="flex" justifyContent="space-between">
-                <Typography variant="body1">Fecha: {item.fecha}</Typography>
-                <Typography variant="body1">Estado: {item.estado}</Typography>
+            <Typography variant="body2">Cantidad: {item.node.orderByOrderId.quantity}</Typography>
+                <Typography variant="body1">Fecha: {item.node.orderByOrderId.date}</Typography>
+                <Typography variant="body1">Estado: {item.node.actionByActionId.name}</Typography>
             </Box>
 
             <Box display="flex" justifyContent="space-between">
-                <Typography variant="body2">Categoría: {item.categoria}</Typography>
-                <Typography variant="body2">Descripción: {item.descripcion}</Typography>
+                <Typography variant="body2">Categoría: {item.node.orderByOrderId.categoryByCategoryId.name}</Typography>
+                <Typography variant="body2">Donante: {item.node.orderByOrderId.userByUserId.fullname}</Typography>
+                <Typography variant="body2">Direccion: {item.node.orderByOrderId.userByUserId.direction}</Typography>
             </Box>
+            <br/>
 
             <Box display="flex" justifyContent="flex-end">
-                <Typography variant="body2">Cantidad: {item.cantidad}</Typography>
+                <Button variant="contained" color="primary">
+                    Lo quiero!
+                </Button>
             </Box>
         </Paper>
     );
@@ -47,11 +39,13 @@ const ListItem = ({ item }) => {
 
 
 export default function ListPage() {
+    const { data } = useSuspenseQuery(GET_OFFERS);
+
     return (
         <any>
             <Container>
                 <Typography variant="h4" gutterBottom>  Donaciones</Typography>
-                {items.map((item, index) => (
+                {data.allTransactions.edges.map((item, index) => (
                     <ListItem key={index} item={item} />
                 ))}
             </Container>
