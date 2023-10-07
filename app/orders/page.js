@@ -10,9 +10,26 @@ import  GET_ORDERS  from '@/lib/queries/myorders';
 export const dynamic = "force-dynamic";
 
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-
+import createTransaction from '@/lib/requests/createTransaction';
 
 const ListItem = ({ item }) => {
+
+    const reject = () => {
+
+        let userID = JSON.parse(localStorage.getItem("user"))
+
+        let tx =  {
+            "date": new Date(),
+            "actionId": 5,
+            "orderId": item.node.id,
+            "userId": userID
+        }
+        createTransaction(tx).then((data)=>{
+            console.log(data)
+            window.location.href = "/orders"
+        })
+    }   
+
     return (
         <Paper style={{ padding: '1em', margin: '1em 0' }}>
             <Typography variant="h6">{item.node.description} </Typography>
@@ -30,9 +47,9 @@ const ListItem = ({ item }) => {
                 <Typography variant="body2">Cantidad: {item.node.quantity}</Typography>
             </Box>
             <Box display="flex" justifyContent="flex-end">
-                <Button variant="contained"  style={{ backgroundColor: 'red', color: 'white' }}>
+               {item.node.transactionsByOrderId.edges.length && item.node.transactionsByOrderId.edges[0].node.actionByActionId.id ==1? <Button variant="contained"  style={{ backgroundColor: 'red', color: 'white' }} onClick={reject}>
                     Retirar
-                </Button>
+                </Button>:null}
             </Box>
         </Paper>
     );
