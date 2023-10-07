@@ -53,7 +53,7 @@ const ListItem = ({ item }) => {
 
             <Box display="flex" justifyContent="flex-end">
                  {item.node.actionByActionId.id==1&&<Button variant="contained" onClick={(e) => { send(item.node,2)  }} color="primary">
-                    ¡Lo quiero!
+                    Lo quiero!
                 </Button>}
                 {item.node.actionByActionId.id==2&&(<Stack direction="row" spacing={2} >
                 <Button variant="contained" color="success" onClick={(e) => { send(item.node,3)  }} >
@@ -82,7 +82,23 @@ export default function ListPage() {
             const ids = data.allGetOffers.edges.map(item => item.node.id);
             GET_OFFERS(ids)
             .then(response => {
-                setOrders(response.data.allTransactions.edges);
+                if (response.data.allTransactions.edges.length == 0) {
+                    return;
+                }
+
+                console.log("data", response.data);
+                let user = JSON.parse(localStorage.getItem("user"))
+                let data =[]
+                response.data.allTransactions.edges.map((item,index)=>{
+                    if(item.node.actionId==1 || item.node.userId == user){
+                        data.push(item)
+                    }
+                })
+
+                console.log("data2", data);
+
+
+                setOrders(data);
             })
             .catch(error => {
                 // Maneja el error aquí si lo deseas.
