@@ -4,7 +4,7 @@ import { Paper, Typography, Box,Button } from '@mui/material';
 import { Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import { useRouter } from 'next/navigation'
-
+import { useEffect,useState } from 'react';
 import  GET_ORDERS  from '@/lib/queries/myorders';
 
 export const dynamic = "force-dynamic";
@@ -59,7 +59,13 @@ const ListItem = ({ item }) => {
 export default function ListPage() {
     const router = useRouter()
     const { data } = useSuspenseQuery(GET_ORDERS);
+    const [userId, setUserId] = useState(0);
+    useEffect(() => {
+        let user = JSON.parse(window.localStorage.getItem("user"))
+        setUserId((+(user)))
+    }, []);
 
+   // let user = JSON.parse(window.localStorage.getItem("user"))
     return (
         <any>
          
@@ -67,9 +73,10 @@ export default function ListPage() {
             <Container>
             <Typography variant="h4" gutterBottom>  Colaboraciones</Typography>
                 {data.allOrders.edges.map((item, index) => {
-                    // if (item.node.userId!= JSON.parse(localStorage.getItem("user"))){
-                    //     return 
-                    // } 
+                    
+                    if (item.node.userId!=  userId ){
+                        return 
+                    } 
 
                    return  <ListItem key={index} item={item} />
 })}
