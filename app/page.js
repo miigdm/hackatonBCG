@@ -10,8 +10,6 @@ export default function LandingPage() {
 
     return (
         <>
-        
-
             <Container>
                 {/* <Image
                     src="/path-a-tu-imagen.jpg"
