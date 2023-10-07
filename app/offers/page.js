@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { Container,Stack, Paper, Typography, Box , Button} from '@mui/material';
+import { Container,Stack, Paper, Typography, Box , Button, Chip} from '@mui/material';
 
 
 import  GETAll_OFFERS  from '@/lib/queries/getAllOffers';
@@ -37,19 +37,17 @@ const ListItem = ({ item }) => {
             <Box display="flex" justifyContent="space-between">
             <Typography variant="body2">Cantidad: {item.node.orderByOrderId.quantity}</Typography>
                 <Typography variant="body1">Fecha: {item.node.orderByOrderId.date}</Typography>
-                <Typography variant="body1">Estado: {item.node.actionByActionId.name}</Typography>
+                <Chip variant="body1" label={item.node.actionByActionId.name} color="primary" />
             </Box>
 
             <Box display="flex" justifyContent="space-between">
                 <Typography variant="body2">Categoría: {item.node.orderByOrderId.categoryByCategoryId.name}</Typography>
                 <Typography variant="body2">Donante: {item.node.orderByOrderId.userByUserId.fullname}</Typography>
-                <Typography variant="body2">Direccion: {item.node.orderByOrderId.userByUserId.direction}</Typography>
+                <Typography variant="body2">Dirección: {item.node.orderByOrderId.userByUserId.direction}</Typography>
             </Box>
             <br/>
 
             <Box display="flex" justifyContent="flex-end">
-                
-            
                  {item.node.actionByActionId.id==1&&<Button variant="contained" onClick={(e) => { send(item.node,2)  }} color="primary">
                     Lo quiero!
                 </Button>}
@@ -57,7 +55,6 @@ const ListItem = ({ item }) => {
                 <Button variant="contained" color="success" onClick={(e) => { send(item.node,3)  }} >
                     Retirar
                 </Button>
-                
                 <Button variant="contained" color="error" onClick={(e) => { send(item.node,1 )  }} >
                    Cancelar
                 </Button>
