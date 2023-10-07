@@ -12,6 +12,7 @@ import {
   } from '@mui/material';
   import { useFormik } from 'formik';
   import * as Yup from 'yup';
+  import createUser from '@/lib/requests/createUser';
   
   const validationSchema = Yup.object({
     nombre: Yup.string().required('Nombre es requerido'),
@@ -37,6 +38,36 @@ import {
       validationSchema: validationSchema,
       onSubmit: (values) => {
         console.log('Form data', values);
+       let  user = {
+            "fullname": values.nombre,
+            "email": values.email,
+            "password": values.password,
+            "phoneNumber":values.telefono,
+            "direction": values.direccion,
+            "businessCategory": values.rubro,
+            "roleId": (+(values.rol))
+        }
+        console.log(user)
+        createUser(user).then((data)=>{
+            console.log(data)
+            if (data["errors"]!=undefined  ){
+                alert("El email ya existe") // arreglar alguna vez
+            }
+
+            localStorage.setItem("user", JSON.stringify(data["data"]["createUser"]["user"]["id"]))
+            localStorage.setItem("role", JSON.stringify(data["data"]["createUser"]["user"]["roleId"]))
+            localStorage.setItem("fullname", JSON.stringify(data["data"]["createUser"]["user"]["fullname"]))
+            if (data["data"]["createUser"]["user"]["roleId"]==2){
+                window.location.href = "/orders"
+            }
+            else if (data["data"]["createUser"]["user"]["roleId"]==3){
+                window.location.href = "/offers"
+            }
+
+            
+        })
+
+
       },
     });
   
@@ -114,8 +145,8 @@ import {
                   value={formik.values.rol}
                   onChange={formik.handleChange}
                 >
-                  <MenuItem value="empresa">Empresa</MenuItem>
-                  <MenuItem value="albergue">Albergue</MenuItem>
+                  <MenuItem value={2}>Empresa</MenuItem>
+                  <MenuItem value={3}>Albergue</MenuItem>
                 </Select>
                 {formik.touched.rol && <div style={{ color: 'red' }}>{formik.errors.rol}</div>}
               </FormControl>

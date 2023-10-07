@@ -9,6 +9,9 @@ import  GET_CATEGORIES  from '@/lib/queries/categories';
 export const dynamic = "force-dynamic";
 
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import createOrder from '@/lib/requests/createOrder';
+import createTransaction from '@/lib/requests/createTransaction';
+import { create } from 'lodash';
 
 
 
@@ -32,9 +35,37 @@ const AddItemForm =  () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // Aquí manejas el envío del formulario
-      // Por ejemplo, enviar los valores a una API o base de datos
-      console.log('Form data', values);
+
+    let userID = JSON.parse(localStorage.getItem("user"))
+
+
+    let item =  {
+        "date": values.fecha,
+        "category": values.categoria,
+        "quantity": values.cantidad,
+        "userId": (userID) ,
+        "description": values.descripcion
+    }
+    console.log(item)
+    createOrder(item).then((data)=>{
+        console.log(data)
+        if (data["errors"]!=undefined  ){
+            alert("Error") // arreglar alguna vez
+        }
+       
+        
+       let tx =  {
+            "date": new Date(),
+            "actionId": 1,
+            "orderId": (+(data["data"]["createOrder"]["order"]["id"])),
+            "userId": userID
+        }
+        createTransaction(tx).then((data)=>{
+            console.log(data)
+        })
+
+    })
+
     },
   });
 
